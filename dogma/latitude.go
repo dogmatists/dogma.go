@@ -16,7 +16,7 @@ const (
 	MaxLatitudeDegrees = 90
 )
 
-// NewLatitude
+// NewLatitude constructs a new latitude.
 func NewLatitude(degrees float64) (Latitude, error) {
 	if degrees < MinLatitudeDegrees {
 		return Latitude{}, errors.New("Latitude bounds are ±90°")

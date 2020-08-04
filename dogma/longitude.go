@@ -16,7 +16,7 @@ const (
 	MaxLongitudeDegrees = 180
 )
 
-// NewLongitude
+// NewLongitude constructs a new longitude.
 func NewLongitude(degrees float64) (Longitude, error) {
 	if degrees < MinLongitudeDegrees {
 		return Longitude{}, errors.New("Longitude bounds are ±180°")

@@ -5,7 +5,7 @@ package dogma
 import "testing"
 import "github.com/stretchr/testify/assert"
 
-func TestLongitude(t *testing.T) {
+func TestNewLongitude(t *testing.T) {
 	lat, err := NewLongitude(0)
 	if assert.Nil(t, err) {
 		assert.Equal(t, 0.0, lat.Degrees())
@@ -20,13 +20,17 @@ func TestLongitude(t *testing.T) {
 	if assert.Nil(t, err) {
 		assert.Equal(t, 180.0, lat.Degrees())
 	}
+}
 
-	lat, err = NewLongitude(-181)
+func TestNewLongitudeUnderflow(t *testing.T) {
+	lat, err := NewLongitude(-181)
 	if assert.Error(t, err) {
 		assert.Equal(t, 0.0, lat.Degrees())
 	}
+}
 
-	lat, err = NewLongitude(181)
+func TestNewLongitudeOverflow(t *testing.T) {
+	lat, err := NewLongitude(181)
 	if assert.Error(t, err) {
 		assert.Equal(t, 0.0, lat.Degrees())
 	}
